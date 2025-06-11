@@ -1,0 +1,25 @@
+<textarea id="htmlInput" rows="10" cols="30">
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hello World!</h1>
+    <p>Ini dari textarea</p>
+  </body>
+</html>
+</textarea>
+<br>
+<button onclick="generateJSOLink()">Buat JSO Link</button>
+<p><a id="jsoLink" target="_blank" style="color:blue">Klik untuk buka</a></p>
+
+<script>
+  function generateJSOLink() {
+    const html = document.getElementById("htmlInput").value;
+    // Encode unicode-safe
+    const encoded = btoa(unescape(encodeURIComponent(html)));
+    const jsoUrl = "data:text/html;base64," + encoded;
+
+    const link = document.getElementById("jsoLink");
+    link.href = jsoUrl;
+    link.textContent = "Klik untuk buka (JSO Link)";
+  }
+</script>
